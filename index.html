@@ -25,9 +25,21 @@
         <div class="main-container container-fluid" >
             <div class="row-fluid">
                 <div class="left-menu span2 nav nav-list" >
-                    {{#each model}}
-                    <p>{{#linkTo "user" this}}{{first}}{{/linkTo}}</p>
+                    <li class="nav-header">
+                        <di>
+                            <img src="resources/images/user.png"/>
+                        </di>
+                        <div>
+                            <p>Dr. Johnny Appleseed</p>
+                        </div>
+                    </li>
+                    {{#each tmpUser in info}}
+                        <li>{{#linkTo "user" tmpUser}}{{tmpUser.name}}{{/linkTo}}</li>
                     {{/each}}
+                    <li class="divider"></li>
+                    <li>Account</li>
+                    <li>Privacy Policy</li>
+                    <li>Help?</li>
                 </div>
                 <div class="left-menu-items span3" >
                 </div>
@@ -45,14 +57,14 @@
 
     <script type="text/x-handlebars" id="user">
         <h2>
-            {{first}} {{last}}
+            {{name}} {{description}}
             <img {{bindAttr src="avatar"}} class="pull-right" width=50 />
         </h2>
         <dl>
-            <dt>First</dt>
-            <dd>{{first}}</dd>
-            <dt>Last</dt>
-            <dd>{{last}}</dd>
+            <dt>Name</dt>
+            <dd>{{name}}</dd>
+            <dt>Description</dt>
+            <dd>{{description}}</dd>
         </dl>
     </script>
 
