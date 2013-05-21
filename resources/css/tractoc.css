@@ -22,20 +22,28 @@ html, body {
 
 .left-menu {
     height: 100%;
-    background-color: green;
+    background-color: #9abe92;
 }
 
 .left-menu-items {
     height: 100%;
-    background-color: yellow;
+    background-color: #f4ff77;
 }
 
 .center-area {
     height: 100%;
-    background-color: red;
+    background-color: #ff6759;
 }
 
 .right-menu {
     height: 100%;
-    background-color: darkred;
+}
+
+.top-menu{
+    height: 80%;
+    background-color: #d3954f;
+}
+
+.bottom-menu{
+    background-color: #5693d3;
 }

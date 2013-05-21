@@ -11,30 +11,57 @@
     <link href="resources/css/bootstrap.min.css" rel="stylesheet" >
     <link href="resources/css/bootstrap-responsive.min.css" rel="stylesheet" >
     <link href="resources/css/tractoc.css" rel="stylesheet" >
-
 </head>
 <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top" >
-        <div class="navbar-inner" >
-            <div class="container-fluid" >
-                <a class="brand" href="#">TracToc</a>
+    <script type="text/x-handlebars">
+        <div class="navbar navbar-inverse navbar-fixed-top" >
+            <div class="navbar-inner" >
+                <div class="container-fluid" >
+                    <a class="brand" href="#">TracToc</a>
+                </div>
             </div>
         </div>
-    </div>
+        <div class="main-container container-fluid" >
+            <div class="row-fluid">
+                <div class="left-menu span2 nav nav-list" >
+                    {{#each model}}
+                    <p>{{#linkTo "user" this}}{{first}}{{/linkTo}}</p>
+                    {{/each}}
+                </div>
+                <div class="left-menu-items span3" >
+                </div>
+                <div class="center-area span4" >
+                    {{outlet}}
+                </div>
+                <div class="right-menu span3" >
+                    <div class="row-fluid">
+                        <div class="top-menu span12"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
 
-    <div class="main-container container-fluid" >
-        <div class="row-fluid">
-            <div class="left-menu span2" >
-            </div>
-            <div class="left-menu-items span2" >
-            </div>
-            <div class="center-area span4" >
-            </div>
-            <div class="right-menu span4" >
-            </div>
-        </div>
-    </div>
+    <script type="text/x-handlebars" id="user">
+        <h2>
+            {{first}} {{last}}
+            <img {{bindAttr src="avatar"}} class="pull-right" width=50 />
+        </h2>
+        <dl>
+            <dt>First</dt>
+            <dd>{{first}}</dd>
+            <dt>Last</dt>
+            <dd>{{last}}</dd>
+        </dl>
+    </script>
+
+    <script src="resources/js/libs/jquery-1.9.1.js"></script>
+    <script src="resources/js/libs/handlebars-1.0.0-rc.3.js"></script>
+    <script src="resources/js/libs/ember-1.0.0-rc.3.js"></script>
+    <script src="resources/js/libs/ember-data.js"></script>
+    <script src="resources/js/libs/bootstrap.min.js"></script>
+    <script src="resources/js/app.js"></script>
 
 </body>
 </html>
