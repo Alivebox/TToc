@@ -5,8 +5,20 @@ App.Router.map(function() {
 });
 
 App.UserRoute = Ember.Route.extend({
+    renderTemplate: function() {
+        // Render default outlet
+        this.render();
+        // render extra outlets
+        this.render("worthReading", {
+            outlet: "worthReading",
+            into: "application" // important when using at root level
+        });
+    },
     model: function(params) {
-        return users[params.user_id];
+        return subCategories[params.user_id];
+    },
+    setupController: function(controller, model){
+        controller.set('subCategories', subCategories)
     }
 });
 
@@ -18,6 +30,44 @@ App.ApplicationRoute = Ember.Route.extend({
         controller.set('info', model)
     }
 });
+
+var subCategories = [
+    {
+        id: 0,
+        name: 'Sub Category What´s New',
+        new: 1,
+        toAdd:0,
+        description: 'Description what´s New'
+    },
+    {
+        id: 1,
+        name: 'Sub Category Journal',
+        new: 1,
+        toAdd:0,
+        description: 'Description Journal'
+    },
+    {
+        id: 2,
+        name: 'Sub Category Research',
+        new: 1,
+        toAdd:0,
+        description: 'Description Research'
+    },
+    {
+        id: 3,
+        name: 'Sub Category Discovery',
+        new: 1,
+        toAdd:0,
+        description: 'Description Discovery'
+    },
+    {
+        id: 4,
+        name: 'Sub Category Reading List',
+        new: 1,
+        toAdd:0,
+        description: 'Description Reading List'
+    }
+];
 
 var users = [
     {

@@ -18,7 +18,7 @@
         <div class="navbar navbar-inverse navbar-fixed-top" >
             <div class="navbar-inner" >
                 <div class="container-fluid" >
-                    <a class="brand" href="#">TracToc</a>
+                    <a class="brand" href="#">Trac TOC</a>
                 </div>
             </div>
         </div>
@@ -42,13 +42,17 @@
                     <li>Help?</li>
                 </div>
                 <div class="left-menu-items span3" >
+                    {{outlet}}
                 </div>
                 <div class="center-area span4" >
-                    {{outlet}}
+                    {{outlet "articleList"}}
+                    {{outlet "article"}}
                 </div>
                 <div class="right-menu span3" >
                     <div class="row-fluid">
-                        <div class="top-menu span12"></div>
+                        <div class="top-menu span12">
+                            {{outlet "worthReading"}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -56,16 +60,41 @@
     </script>
 
     <script type="text/x-handlebars" id="user">
-        <h2>
-            {{name}} {{description}}
-            <img {{bindAttr src="avatar"}} class="pull-right" width=50 />
-        </h2>
-        <dl>
-            <dt>Name</dt>
-            <dd>{{name}}</dd>
-            <dt>Description</dt>
-            <dd>{{description}}</dd>
-        </dl>
+        <!--<h2>-->
+            <!--{{name}} {{description}}-->
+        <!--</h2>-->
+        <!--<dl>-->
+            <!--<dt>Name</dt>-->
+            <!--<dd>{{name}}</dd>-->
+            <!--<dt>Description</dt>-->
+            <!--<dd>{{description}}</dd>-->
+        <!--</dl>-->
+        <div class="nav nav-list" >
+            <li class="nav-header">
+                <div>
+                     <p>View By:  A-Z    Newest:</p>
+                </div>
+            </li>
+            {{#each tmpSubCategory in subCategories}}
+                <li>{{tmpSubCategory.name}}</li>
+            {{/each}}
+            <li class="divider"></li>
+            <li>Account</li>
+            <li>Privacy Policy</li>
+            <li>Help?</li>
+        </div>
+    </script>
+
+    <script type="text/x-handlebars" id="worthReading">
+        <h2>Worth Reading</h2>
+    </script>
+
+    <script type="text/x-handlebars" id="articleList">
+        <h2>Article List</h2>
+    </script>
+
+    <script type="text/x-handlebars" id="article">
+        <h2>Article</h2>
     </script>
 
     <script src="resources/js/jquery-1.9.1.js"></script>
